@@ -265,10 +265,6 @@ Builder.registerComponent(BlogSection, {
   name: "All Blog Section",
 });
 
-Builder.registerComponent(ExploreOurCaseStudySection, {
-  name: "ExploreOurCaseStudySection",
-});
-
 Builder.registerComponent(InsightsAndUpdatesSection, {
   name: "InsightsAndUpdatesSection",
 });
@@ -305,10 +301,44 @@ Builder.registerComponent(RelatedPostCard, {
     {
       name: "articleRef",
       type: "reference",
-      model:"articles",
+      model: "articles",
       meta: {
         ts: "any",
       },
     },
   ],
 });
+
+Builder.registerComponent(ExploreOurCaseStudySection, {
+  name: "ExploreOurCaseStudySection",
+  inputs: [
+    {
+      name: "listArticleRed",
+      type: "list",
+      meta: {
+        ts: "any",
+      },
+      subFields:[{
+        name:"blog",
+        type:"reference",
+        model:"articles"
+      }]
+    },
+  ],
+});
+
+
+// Builder.registerComponent(ExploreOurCaseStudySection, {
+//   name: "Explore Our Case Study Section",
+//   inputs: [
+//     {
+//       name: "listArticleRed",
+//       type: "object",
+//       hideFromUI: true,
+//       meta: {
+//         ts: "any[]",
+//       },
+//     },
+//   ],
+// });
+
