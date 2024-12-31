@@ -14,8 +14,8 @@ builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 const AllBlogCard: React.FC = () => {
   const searchParams = useSearchParams();
-  const pageParam = searchParams.get("page"); 
-  const currentPage = Number(pageParam) || 1; 
+  const pageParam = searchParams.get("page");
+  const currentPage = Number(pageParam) || 1;
 
   const [items, setItems] = useState<any[]>([]);
   const [itemCount, setItemCount] = useState(0);
@@ -46,7 +46,6 @@ const AllBlogCard: React.FC = () => {
           currentPage * perPage
         );
         setItems(paginatedItems);
-
       } catch (error) {
         console.error("Failed to fetch data:", error);
       }
@@ -55,6 +54,11 @@ const AllBlogCard: React.FC = () => {
     fetchData();
   }, [currentPage, currentTab]);
 
+  const handleCategoryClick = (category: string | null) => {
+    setCurrentTab(category); // Update the current tab
+    // Reset to the first page when switching categories
+    window.history.replaceState(null, "", "?page=1");
+  };
 
   const totalPages = Math.ceil(itemCount / perPage);
 
@@ -87,7 +91,7 @@ const AllBlogCard: React.FC = () => {
                 ? "text-[#00C7BE] font-semibold"
                 : "text-black"
                 }`}
-              onClick={() => setCurrentTab(category.value)}
+              onClick={() => handleCategoryClick(category.value)}
             >
               {category.label}
             </div>
@@ -105,19 +109,15 @@ const AllBlogCard: React.FC = () => {
       </div>
 
       {/* Blog Cards */}
-      {
-        itemCount == 0 ?
-        ( 
-          <h2 className="text-center w-full">No Cards Available</h2>
-        ):
-        (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-start justify-items-center gap-4">
-        {items.map((blog, index) => (
-          <BlogCard blog={blog} key={index} />
-        ))}
-      </div>
-        ) 
-      }
+      {itemCount === 0 ? (
+        <h2 className="text-center w-full">No Cards Available</h2>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-start justify-items-center gap-4">
+          {items.map((blog, index) => (
+            <BlogCard blog={blog} key={index} />
+          ))}
+        </div>
+      )}
 
       {/* Pagination Controls */}
       <div className="pagination flex items-center justify-center gap-2">
@@ -151,7 +151,7 @@ const AllBlogCard: React.FC = () => {
           </Link>
         </>
       </div>
-    </div >
+    </div>
   );
 };
 
