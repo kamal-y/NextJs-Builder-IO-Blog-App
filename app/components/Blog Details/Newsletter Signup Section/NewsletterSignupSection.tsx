@@ -2,20 +2,17 @@
 import React from 'react';
 
 interface NewsletterSubscriptionProps{
-  title? : string,
-  description? : string
+  title : string,
+  description : string
 }
 
 const NewsletterSubscription:React.FC<NewsletterSubscriptionProps> = ({title,description}) => {
   return (
     <div className="flex flex-col text-start items-center justify-center md:pr-16 p-3 bg-white sm:py-12 max-w-md rounded-md">
-      <h2 className="text-2xl text-start font-bold font-poppins sm:text-3xl text-gray-800">
-        {title}
-      </h2>
+      <h2 className="text-2xl text-start font-bold font-poppins sm:text-3xl text-gray-800"
+        dangerouslySetInnerHTML={ {__html:title} } />
 
-      <p className="text-start mt-4  text-[#595959]]">
-        {description}
-      </p>
+      <p className="text-start mt-4  text-[#595959]]" dangerouslySetInnerHTML={ {__html:description} } />
 
       <div className="mt-6   flex w-full">
         <input

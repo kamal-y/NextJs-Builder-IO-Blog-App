@@ -80,7 +80,7 @@ const AllBlogCard: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col gap-12 py-7 pt-20">
+    <div className="flex flex-col gap-12 py-7 pt-20 max-w-screen-2xl dark:border-gray-400">
       {/* Category Tabs */}
       <div className="flex flex-wrap gap-4 justify-between items-center sm:px-8 md:px-16">
         <div className="flex flex-wrap gap-1 items-center justify-center sm:justify-start w-full sm:w-auto">

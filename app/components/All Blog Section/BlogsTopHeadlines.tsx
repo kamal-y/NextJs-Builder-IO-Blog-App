@@ -11,7 +11,7 @@ const BlogsTopHeadlines: React.FC<BlogsTopHeadlinesProps> = ({ heading, title, d
     return (
         <div className='flex flex-col items-center justify-center w-full gap-4'>
           
-                <div className='hover:cursor-pointer text-sm font-bold font-poppins text-center text-lightBlue'>
+                <div className='hover:cursor-pointer text-sm font-bold font-poppins text-center text-lightBlue uppercase'>
                     {heading}
                 </div>
             <div className='text-5xl font-medium flex justify-start text-black w-full font-poppins'>

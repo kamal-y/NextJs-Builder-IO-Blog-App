@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import AllBlogCard from './AllBlogCard';
+import AllBlogCard from './Blog-grid-box';
 import { useSearchParams } from 'next/navigation';
 import BlogsTopHeadlines from './BlogsTopHeadlines';
 

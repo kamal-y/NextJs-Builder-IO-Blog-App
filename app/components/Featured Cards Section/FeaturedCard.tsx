@@ -28,7 +28,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({ blog, articleRef }) => {
   const { description, readTime, thumbNail, title, slug } = data;
 
   return (
-    <div className="flex flex-col gap-3 max-w-xs rounded-lg overflow-hidden bg-white shadow-lg">
+    <div className="flex flex-col gap-3 max-w-xs rounded-lg  overflow-hidden bg-white shadow-lg w-full">
       {/* Blog Thumbnail */}
       <Link href={`blogs/${slug}`}>
         <div className="relative w-full h-48">
@@ -41,9 +41,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = ({ blog, articleRef }) => {
       </Link>
 
       <div className="py-8 px-4">
-        {/* Header Section */}
         <div className="flex items-center gap-3">
-          {/* Button */}
           <div className="w-1/5">
             <Button text="News" />
           </div>

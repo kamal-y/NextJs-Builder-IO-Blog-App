@@ -10,7 +10,7 @@ import { builder } from "@builder.io/sdk";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-const Navbar:React.FC = () => {
+const Navbar: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [navLinks, setNavLinks] = useState<any[]>([]);
 
@@ -65,10 +65,14 @@ const Navbar:React.FC = () => {
             <div className="flex flex-row gap-4 items-center mt-4 md:mt-0">
                 <div className="flex gap-2 font-semibold h-10">
                     <div className='px-4  flex justify-center items-center border  border-[#00C7BE] rounded-md'>
-                        <Button text="Login" />
+                        <Link href="/login">
+                            <Button text="Login" />
+                        </Link>
                     </div>
                     <div className='px-4 flex justify-center items-center bg-[#00C7BE] rounded-md'>
-                        <Button text="Register Now" />
+                        <Link href="/signup">
+                            <Button text="Register Now" />
+                        </Link>
                     </div>
                 </div>
                 <div className="w-9 hidden sm:flex items-center justify-center ">

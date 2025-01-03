@@ -1,4 +1,3 @@
-"use client"
 import React from "react";
 import Link from 'next/link';
 import { builder } from "@builder.io/sdk";
@@ -6,40 +5,58 @@ import { builder } from "@builder.io/sdk";
 // Initialize Builder.io with the API key
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY || "");
 
-const Footer: React.FC = () => {
+const Footer: React.FC = async () => {
 
-  // const data = await builder.getAll("footers-data-model");
-  // console.log("Footer data from Builder.io:", data);
+  const allFooterData = await builder.getAll("footer-model", {
+    sort: {
+      createdDate: 1,
+    },
+    cachebust: true,
+    fields: "data"
+  });
+
+  const aboutList =  allFooterData[0].data?.about;
+  const resoucesList =  allFooterData[0].data?.resources;
+  const supportContactList =  allFooterData[0].data?.supportContact;
 
   return (
     <div className="flex flex-col justify-between items-center p-6 w-full">
       {/* Footer Links */}
       <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:items-start max-w-5xl w-full sm:pb-32">
         {/* About Section */}
-        <div className="text-sm flex gap-2 flex-col justify-between items-start text-[#B3B3B3]">
+        <div className="text-sm flex gap-2 flex-col justify-between items-start text-[#969595]">
           <p className="pb-2 text-black font-semibold">About</p>
-          <p>Company Overview</p>
-          <p>Careers</p>
-          <p>Press and Media</p>
-          <p>Testimonials</p>
+          {
+            aboutList &&
+
+            aboutList.map((item : any)=>{
+              return <Link key={item.url} href={item.url}><p>{item.name}</p></Link>
+            })
+          }
         </div>
   
         {/* Resources Section */}
-        <div className="text-sm flex gap-2 flex-col justify-between items-start text-[#B3B3B3]">
+        <div className="text-sm flex gap-2 flex-col justify-between items-start text-[#969595]">
           <p className="pb-2 text-black font-semibold">Resources</p>
-          <p>Blog</p>
-          <p>Help Center</p>
-          <p>Webinars & Events</p>
-          <p>Case Studies</p>
+          {
+            resoucesList &&
+
+            resoucesList.map((item : any)=>{
+              return <Link key={item.url} href={item.url}><p>{item.name}</p></Link>
+            })
+          }
         </div>
   
         {/* Support & Contact Section */}
-        <div className="text-sm flex gap-2 flex-col justify-between items-start text-[#B3B3B3]">
+        <div className="text-sm flex gap-2 flex-col justify-between items-start text-[#969595]">
           <p className="pb-2 text-black font-semibold">Support & Contact</p>
-          <p>Contact Us</p>
-          <p>Technical Support</p>
-          <p>Feedback</p>
-          <p>Community Forum</p>
+          {
+            supportContactList &&
+
+            supportContactList.map((item : any)=>{
+              return <Link key={item.url} href={item.url}><p>{item.name}</p></Link>
+            })
+          }
         </div>
       </div>
   
