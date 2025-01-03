@@ -12,7 +12,7 @@ interface ExploreOurCaseStudySectionProps {
 
 const ExploreOurCaseStudySection:React.FC<ExploreOurCaseStudySectionProps> = ({listArticleRed}) => {
 
-    console.log(listArticleRed);
+    // console.log(listArticleRed);
     return (
         <div className='flex flex-col items-center justify-center w-full gap-4 px-6 py-16'>
 

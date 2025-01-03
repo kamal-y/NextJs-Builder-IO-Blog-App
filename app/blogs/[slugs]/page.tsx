@@ -19,6 +19,7 @@ export default async function BlogArticle(props: any) {
             prerender: false,
             options: { includeRefs: true },
             query: { "data.slug": slug },  // Use slug to get specific article
+            cachebust : true
         })
         .toPromise();
 

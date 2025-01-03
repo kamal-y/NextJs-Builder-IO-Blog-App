@@ -326,19 +326,3 @@ Builder.registerComponent(ExploreOurCaseStudySection, {
     },
   ],
 });
-
-
-// Builder.registerComponent(ExploreOurCaseStudySection, {
-//   name: "Explore Our Case Study Section",
-//   inputs: [
-//     {
-//       name: "listArticleRed",
-//       type: "object",
-//       hideFromUI: true,
-//       meta: {
-//         ts: "any[]",
-//       },
-//     },
-//   ],
-// });
-
