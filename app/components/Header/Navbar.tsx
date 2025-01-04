@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
     return (
         <nav className="flex flex-row items-center justify-between p-4 w-full bg-white shadow-md">
             <div className="flex items-center gap-4">
-                <div className="flex flex-col items-center h-14">
+                <div className="flex flex-col items-center sm:h-14 h-10">
                     <Image src={LOGO1} alt="weframe-image" />
                     <Image src={LOGO2} alt="weframe-image" />
                 </div>

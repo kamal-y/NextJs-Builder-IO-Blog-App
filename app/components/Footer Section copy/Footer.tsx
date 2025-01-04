@@ -15,66 +15,64 @@ const Footer: React.FC = async () => {
     fields: "data"
   });
 
-  const aboutList =  allFooterData[0].data?.about;
-  const resoucesList =  allFooterData[0].data?.resources;
-  const supportContactList =  allFooterData[0].data?.supportContact;
+  const aboutList = allFooterData[0].data?.about;
+  const resoucesList = allFooterData[0].data?.resources;
+  const supportContactList = allFooterData[0].data?.supportContact;
+  const copyRightList = allFooterData[0].data?.copyRights;
 
   return (
     <div className="flex flex-col justify-between items-center p-6 w-full">
       {/* Footer Links */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:items-start max-w-5xl w-full sm:pb-32">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:items-start max-w-5xl w-full sm:pb-32 pb-10">
         {/* About Section */}
         <div className="text-sm flex gap-2 flex-col justify-between items-start text-[#969595]">
           <p className="pb-2 text-black font-semibold">About</p>
           {
             aboutList &&
 
-            aboutList.map((item : any)=>{
+            aboutList.map((item: any) => {
               return <Link key={item.url} href={item.url}><p>{item.name}</p></Link>
             })
           }
         </div>
-  
+
         {/* Resources Section */}
         <div className="text-sm flex gap-2 flex-col justify-between items-start text-[#969595]">
           <p className="pb-2 text-black font-semibold">Resources</p>
           {
             resoucesList &&
 
-            resoucesList.map((item : any)=>{
+            resoucesList.map((item: any) => {
               return <Link key={item.url} href={item.url}><p>{item.name}</p></Link>
             })
           }
         </div>
-  
+
         {/* Support & Contact Section */}
         <div className="text-sm flex gap-2 flex-col justify-between items-start text-[#969595]">
           <p className="pb-2 text-black font-semibold">Support & Contact</p>
           {
             supportContactList &&
 
-            supportContactList.map((item : any)=>{
+            supportContactList.map((item: any) => {
               return <Link key={item.url} href={item.url}><p>{item.name}</p></Link>
             })
           }
         </div>
       </div>
-  
-      {/* Divider */}
+
+      {/* Divider line */}
       <div className="w-full border-t border-black py-8"></div>
-  
+
       {/* Footer Bottom */}
       <div className="flex flex-row justify-between items-center gap-3 sm:items-start text-[#666666] text-sm">
-        <div className="hover:cursor-pointer">©2024 @weframetech · All rights reserved.</div>
-        <Link href="/terms-of-use">
-          <p className="hover:cursor-pointer">Terms of Use</p>
-        </Link>
-        <Link href="/privacy-policy">
-          <p className="hover:cursor-pointer">Privacy Policy</p>
-        </Link>
-        <Link href="/security">
-          <p className="hover:cursor-pointer">Security</p>
-        </Link>
+        
+           { copyRightList &&
+
+            copyRightList.map((item: any) => {
+              return <Link key={item.url} href={item.url}><p>{item.name}</p></Link>
+            })
+          }
       </div>
     </div>
   );

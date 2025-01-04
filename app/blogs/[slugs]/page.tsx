@@ -40,7 +40,8 @@ export default async function BlogArticle(props: any) {
     const postedDate = content?.data?.postedDate || "";
     const authorName = content?.data?.authorName || "Author Name";
     const authorImage = content?.data?.authorImage || "Author Image";
-    const readingTime = content?.data?.readingTime || ""
+    const readingTime = content?.data?.readingTime || "";
+    const thumbNail = content?.data?.thumbNail || "thumbnail";
 
     return (
         <>
@@ -54,6 +55,7 @@ export default async function BlogArticle(props: any) {
                  readingTime={readingTime}
                  date={postedDate}
                  authorImage={authorImage}
+                 thumbNail={thumbNail}
                  />
                 <RenderBuilderContent
                     content={content}

@@ -15,9 +15,12 @@ import FeaturedCard from "./app/components/Featured Cards Section/FeaturedCard";
 import NewsletterSubscription from "./app/components/Blog Details/Newsletter Signup Section/NewsletterSignupSection";
 import RelatedPostCard from "./app/components/Related Posts Section/RelatedPostCard";
 import Testimonials from "./app/components/Testimonials Section/Testimonials";
-import Thumbnail from "./app/components/Blog Details/Thumbnail section/Thumbnail";
 import FeaturedCardSection from "./app/components/Featured Cards Section/Featured Cards Section";
 import BlogIntroduction from "./app/components/Blog Details/Content Section/BlogIntroduction";
+import BlogPostLists from "./app/components/Blog Details/Content Section/BlogPostLists";
+import BlogFooterSection from "./app/components/Blog Details/Content Section/BlogFooterSection";
+import BlogParaGraph from "./app/components/All Blog Section/BlogParaGraph";
+import BlogSubSectionContents from "./app/components/Blog Details/Content Section/BlogSubSectionContents";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -70,117 +73,107 @@ Builder.registerComponent(BlogIntroduction, {
   ],
 });
 
-// Builder.registerComponent(Thumbnail, {
-//   name: "Current Blog Thumbnail",
-//   inputs: [
-//     {
-//       name: "image",
-//       type: "file",
-//       required: true,
-//     },
-//   ],
-// });
 
-// Builder.registerComponent(BlogParaGraph, {
-//   name: "Current Blog New ParaGraph",
-//   inputs: [
-//     {
-//       name: "text",
-//       type: "string",
-//       required: true,
-//     },
-//   ],
-// });
+Builder.registerComponent(BlogParaGraph, {
+  name: "Current Blog New ParaGraph",
+  inputs: [
+    {
+      name: "text",
+      type: "richText",
+      required: true,
+    },
+  ],
+});
 
-// Builder.registerComponent(BlogSubSectionContents, {
-//   name: "Current Blog SubSection",
-//   inputs: [
-//     {
-//       name: "Heading",
-//       type: "string",
-//       defaultValue: "Enter Your Subheading..",
-//     },
-//     {
-//       name: "paragraphLists",
-//       type: "list",
-//       subFields: [
-//         {
-//           name: "text",
-//           type: "text",
-//           defaultValue: "Your text here...",
-//         },
-//       ],
-//     },
-//   ],
-// });
+Builder.registerComponent(BlogSubSectionContents, {
+  name: "Current Blog SubSection",
+  inputs: [
+    {
+      name: "Heading",
+      type: "richText",
+      defaultValue: "Enter Your Subheading..",
+    },
+    {
+      name: "paragraphLists",
+      type: "list",
+      subFields: [
+        {
+          name: "text",
+          type: "richText",
+          defaultValue: "Your text here...",
+        },
+      ],
+    },
+  ],
+});
 
-// Builder.registerComponent(BlogPostLists, {
-//   name: "Current Blog Post List Item",
-//   inputs: [
-//     {
-//       name: "ListItems",
-//       type: "list",
-//       // hideFromUI: true,
-//       subFields: [
-//         {
-//           name: "text",
-//           type: "text",
-//         },
-//       ],
-//       required: true,
-//     },
-//   ],
-// });
+Builder.registerComponent(BlogPostLists, {
+  name: "Current Blog Post List Item",
+  inputs: [
+    {
+      name: "ListItems",
+      type: "list",
+      // hideFromUI: true,
+      subFields: [
+        {
+          name: "text",
+          type: "richText",
+        },
+      ],
+      required: true,
+    },
+  ],
+});
 
-// Builder.registerComponent(BlogFooterSection, {
-//   name: "Current Blog Footer Section",
-//   inputs: [
-//     {
-//       name: "authorImage",
-//       type: "file",
-//       required: true,
-//     },
-//     {
-//       name: "authorName",
-//       type: "string",
-//       required: true,
-//     },
-//     {
-//       name: "date",
-//       type: "date",
-//       required: true,
-//     },
-//     {
-//       name: "tag",
-//       type: "string",
-//       enum: [
-//         "AI Healthcare",
-//         "AI Insights",
-//         "Case Studies",
-//         "Best Practices",
-//         "others",
-//       ],
-//       required: true,
-//       defaultValue: "others",
-//     },
-//     {
-//       name: "facebookLink",
-//       type: "string",
-//     },
-//     {
-//       name: "linkdInLink",
-//       type: "string",
-//     },
-//     {
-//       name: "personalLink",
-//       type: "string",
-//     },
-//     {
-//       name: "twitterLink",
-//       type: "string",
-//     },
-//   ],
-// });
+Builder.registerComponent(BlogFooterSection, {
+  name: "Current Blog Footer Section",
+  inputs: [
+    {
+      name: "authorImage",
+      type: "file",
+      required: true,
+    },
+    {
+      name: "authorName",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "date",
+      type: "date",
+      required: true,
+    },
+    {
+      name: "tag",
+      type: "string",
+      enum: [
+        "AI Healthcare",
+        "AI Insights",
+        "Case Studies",
+        "Best Practices",
+        "others",
+      ],
+      required: true,
+      defaultValue: "others",
+    },
+    {
+      name: "facebookLink",
+      type: "string",
+    },
+    {
+      name: "linkdInLink",
+      type: "string",
+    },
+    {
+      name: "personalLink",
+      type: "string",
+    },
+    {
+      name: "twitterLink",
+      type: "string",
+    },
+  ],
+});
 
 Builder.registerComponent(NewsletterSubscription, {
   name: "NewsletterSubscription",
@@ -220,14 +213,16 @@ Builder.registerComponent(Testimonials, {
 Builder.registerComponent(FAQItems, {
   name: "FAQ Item",
   inputs: [
-    {
-      name: "answer",
-      type: "string",
-    },
+    
     {
       name: "question",
-      type: "string",
+      type: "richText",
       required: true,
+    },
+    {
+      name: "answer",
+      type: "richText",
+      required : true
     },
   ],
 });
@@ -254,7 +249,7 @@ Builder.registerComponent(BlogsTopHeadlines, {
 });
 
 Builder.registerComponent(FAQ, {
-  name: "FAQ",
+  name: "FAQ Section",
 });
 
 Builder.registerComponent(BlogSection, {

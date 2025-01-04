@@ -22,7 +22,7 @@ interface BlogFooterSectionProps{
 const BlogFooterSection:React.FC<BlogFooterSectionProps> = ({authorImage,authorName,date,tag,personalLink,twitterLink,linkdInLink,facebookLink}) => {
     return (
         <div>
-            <div className='pl-14 w-full flex sm:flex-row flex-col sm:gap-4  text-sm gap-8 pb-16 justify-between items-center'>
+            <div className='pr-14 sm:pr-0 pl-14 w-full flex sm:flex-row flex-col sm:gap-4  text-sm gap-8 pb-16 justify-between items-center'>
                 <div className="flex flex-row justify-start items-center gap-3">
                     <Link href={`#`} passHref className="flex gap-2 items-center">
                         {/* Author Profile Image */}

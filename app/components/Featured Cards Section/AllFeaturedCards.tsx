@@ -14,12 +14,11 @@ interface ExploreOurCaseStudySectionProps {
 }
 
 const AllFeaturedCards: React.FC<ExploreOurCaseStudySectionProps> = ({
-  articleRef = [], // Default to an empty array for safety
+  articleRef = [], 
   toggleButtonViewAll,
 }) => {
   const [showAll, setShowAll] = useState(false);
 
-  // Determine the articles to display
   const displayedArticles = showAll || !toggleButtonViewAll 
     ? articleRef 
     : articleRef.slice(0, 3);

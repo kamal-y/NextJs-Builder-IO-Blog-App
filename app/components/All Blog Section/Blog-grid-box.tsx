@@ -19,7 +19,8 @@ const AllBlogCard: React.FC = () => {
 
   const [items, setItems] = useState<any[]>([]);
   const [itemCount, setItemCount] = useState(0);
-  const [currentTab, setCurrentTab] = useState<string | null>(null); // Track active category
+  const [currentTab, setCurrentTab] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery]  = useState<string>("");
 
   const perPage = 9;
 
@@ -35,9 +36,17 @@ const AllBlogCard: React.FC = () => {
     const fetchData = async () => {
       try {
         // Fetch articles with optional category filtering
-        const allItems = await builder.getAll("articles", {
+        let allItems = await builder.getAll("articles", {
           query: currentTab ? { "data.blogCategory": currentTab } : undefined,
         });
+
+        allItems = allItems.filter((item: any) => {
+          console.log(item);
+          const titleMatch = item.data.title?.toLowerCase().includes(searchQuery.toLowerCase());
+          const descriptionMatch = item.data.description?.toLowerCase().includes(searchQuery.toLowerCase());
+          return titleMatch || descriptionMatch;
+        });
+
         setItemCount(allItems.length);
 
         // Paginate fetched items
@@ -52,11 +61,10 @@ const AllBlogCard: React.FC = () => {
     };
 
     fetchData();
-  }, [currentPage, currentTab]);
+  }, [currentPage, currentTab, searchQuery]);
 
   const handleCategoryClick = (category: string | null) => {
-    setCurrentTab(category); // Update the current tab
-    // Reset to the first page when switching categories
+    setCurrentTab(category); 
     window.history.replaceState(null, "", "?page=1");
   };
 
@@ -104,6 +112,7 @@ const AllBlogCard: React.FC = () => {
             type="text"
             placeholder="Search..."
             className="flex-grow px-2 py-1 focus:outline-none text-sm"
+            onChange={(e)=>{setSearchQuery(e.target.value)}}
           />
         </div>
       </div>
